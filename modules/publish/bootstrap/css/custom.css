@@ -1,0 +1,42 @@
+body
+{
+	padding-top:70px;
+	padding-bottom: 20px;
+}
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+.sidebar{
+  background: #ffffe9  none repeat scroll 0 0;
+  border: 1px solid #DA9000;
+  float: right;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 15px;
+  width: 243px;
+}
+.samesidebar{}
+.samesidebar h2 {
+  background: #D79B00 none repeat scroll 0 0;
+  border-bottom: 5px solid #9e6200;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+.samesidebar p {
+  margin-bottom: 10px;
+}

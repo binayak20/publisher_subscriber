@@ -1,0 +1,662 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 11, 2017 at 03:00 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `publish_subscription`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_add_subscriber`
+--
+
+CREATE TABLE `tbl_add_subscriber` (
+  `InstituteID` varchar(255) NOT NULL,
+  `CategoryID` varchar(255) NOT NULL,
+  `SubscriberID` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_add_subscriber`
+--
+
+INSERT INTO `tbl_add_subscriber` (`InstituteID`, `CategoryID`, `SubscriberID`) VALUES
+('{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}'),
+('{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}'),
+('{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{4C24798C-C6A8-4373-A3CE-535EE86003C6}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_child_cat`
+--
+
+CREATE TABLE `tbl_child_cat` (
+  `CatID` varchar(250) NOT NULL,
+  `UserID` varchar(255) NOT NULL,
+  `InstituteID` varchar(255) NOT NULL,
+  `Name` varchar(55) NOT NULL,
+  `ParentID` varchar(250) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_child_cat`
+--
+
+INSERT INTO `tbl_child_cat` (`CatID`, `UserID`, `InstituteID`, `Name`, `ParentID`) VALUES
+('{606AA9D1-C2F9-45DC-BEB9-EF1EBDCC46C4}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', 'CSE', '{825A18E5-3C5F-4939-9106-57ABC15021BC}'),
+('{825A18E5-3C5F-4939-9106-57ABC15021BC}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', 'SET School', '{94BAED2D-83C5-49B1-974E-714285F7834F}'),
+('{94BAED2D-83C5-49B1-974E-714285F7834F}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', 'Khulna University', '0'),
+('{10ED608E-330C-4993-A735-354AFC44543A}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', 'CSE13', '{606AA9D1-C2F9-45DC-BEB9-EF1EBDCC46C4}'),
+('{989DB3D1-7859-4531-92D4-BD1D543FAEDE}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', '{8809CFFE-7D0E-469C-95DD-897671FAA656}', 'Office', '{4B5DC49F-0FDB-46FF-8B9C-CB153AAF4C74}'),
+('{4B5DC49F-0FDB-46FF-8B9C-CB153AAF4C74}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', '{8809CFFE-7D0E-469C-95DD-897671FAA656}', 'Katpara School', '0'),
+('{A79C4207-5B0C-4A46-B607-E95EFBDBCFFD}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{AED34307-DF37-44AB-9523-EA8AA07D3A7F}', 'BTHQPH School', '0'),
+('{7FCE95CE-77D9-4E0A-B653-B76407DA21FB}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', '{8809CFFE-7D0E-469C-95DD-897671FAA656}', 'Teachers', '{4B5DC49F-0FDB-46FF-8B9C-CB153AAF4C74}'),
+('{3A4FE1F3-8F82-44F9-9D37-D44621B7E8B9}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', '{8809CFFE-7D0E-469C-95DD-897671FAA656}', 'Class 10', '{4B5DC49F-0FDB-46FF-8B9C-CB153AAF4C74}'),
+('{3892F28A-D9A5-48D8-9017-249617DDAAB0}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', '{8809CFFE-7D0E-469C-95DD-897671FAA656}', 'Class 9', '{4B5DC49F-0FDB-46FF-8B9C-CB153AAF4C74}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_favourite_notice`
+--
+
+CREATE TABLE `tbl_favourite_notice` (
+  `FNoticeID` varchar(255) NOT NULL,
+  `SubscriberID` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_favourite_notice`
+--
+
+INSERT INTO `tbl_favourite_notice` (`FNoticeID`, `SubscriberID`) VALUES
+('{9D0CE24D-DA93-46C4-BBBD-8428E9600712}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}'),
+('{9D0CE24D-DA93-46C4-BBBD-8428E9600712}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_file`
+--
+
+CREATE TABLE `tbl_file` (
+  `ID` varchar(255) NOT NULL,
+  `CategoryID` varchar(255) NOT NULL,
+  `PublisherID` varchar(255) NOT NULL,
+  `PublisherName` varchar(50) NOT NULL,
+  `Image` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_file`
+--
+
+INSERT INTO `tbl_file` (`ID`, `CategoryID`, `PublisherID`, `PublisherName`, `Image`) VALUES
+('{8F7048A5-7B63-46E9-B84A-42920E5772D7}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'Binayak', 'post_uploads/8ec38649eb.jpg'),
+('{5C59A214-2FB7-454E-A778-0BEF3F54CD39}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'Binayak', 'post_uploads/3a8596684c.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_image`
+--
+
+CREATE TABLE `tbl_image` (
+  `ID` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Image` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_image`
+--
+
+INSERT INTO `tbl_image` (`ID`, `Name`, `Image`) VALUES
+('{8AD1D117-B4DB-4325-BE01-7CB8BE0AFA14}', 'poem of binayak', 'uploads/hotat bristy.docx'),
+('{F48A2CF4-D4FA-4D98-982C-4EAA467FC358}', 'koushiks Father', 'uploads/19113751_1991991214363677_8668836943281170310_n.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_institution`
+--
+
+CREATE TABLE `tbl_institution` (
+  `ID` varchar(255) NOT NULL,
+  `UserID` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `Description` longtext NOT NULL,
+  `Image` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_institution`
+--
+
+INSERT INTO `tbl_institution` (`ID`, `UserID`, `Name`, `Address`, `Description`, `Image`) VALUES
+('{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'Khulna University', 'khulna,Bangladesh', 'Khulna University is the southeast university in our country.Only one politics free public university in our country.', 'Institute_uploads/6b940f1e57.jpg'),
+('{AED34307-DF37-44AB-9523-EA8AA07D3A7F}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'BTHQPH School', 'Batiaghata,khulna', 'This is one of the best school in Batiaghata Upazilla', 'Institute_uploads/8820d9561e.jpg'),
+('{8809CFFE-7D0E-469C-95DD-897671FAA656}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', 'Katpara School', 'Paikgaca,khulna,Bangladesh', 'This is a good school in paikgaca upazila bangladesh.About 600 students study here.', 'Institute_uploads/bb477cd3f9.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_new_publisher`
+--
+
+CREATE TABLE `tbl_new_publisher` (
+  `InstituteID` varchar(255) NOT NULL,
+  `CategoryID` varchar(255) NOT NULL,
+  `PublisherID` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_new_publisher`
+--
+
+INSERT INTO `tbl_new_publisher` (`InstituteID`, `CategoryID`, `PublisherID`) VALUES
+('{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}'),
+('{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{606AA9D1-C2F9-45DC-BEB9-EF1EBDCC46C4}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}'),
+('{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{825A18E5-3C5F-4939-9106-57ABC15021BC}', '{BC6BD37B-CCFE-4AEE-BEA9-19373F26201C}'),
+('{AED34307-DF37-44AB-9523-EA8AA07D3A7F}', '{A79C4207-5B0C-4A46-B607-E95EFBDBCFFD}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_notice`
+--
+
+CREATE TABLE `tbl_notice` (
+  `ID` varchar(100) NOT NULL,
+  `ChildCatID` varchar(255) NOT NULL,
+  `PubCatID` varchar(255) NOT NULL,
+  `PublisherID` varchar(100) NOT NULL,
+  `Status` int(10) NOT NULL,
+  `Notice` longtext NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_notice`
+--
+
+INSERT INTO `tbl_notice` (`ID`, `ChildCatID`, `PubCatID`, `PublisherID`, `Status`, `Notice`, `date`) VALUES
+('{D80D6301-2A01-4AFA-9A43-B39ECCEFD3D5}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 0, 'Exam date has been fixed', '2017-11-09 02:52:28'),
+('{9BD94B90-49F7-4E80-9F83-3B2D765E5E31}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 0, 'exam is canceled', '2017-11-09 03:22:46'),
+('{9D0CE24D-DA93-46C4-BBBD-8428E9600712}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{10ED608E-330C-4993-A735-354AFC44543A}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 0, 'Our Pl has started from 10th November.', '2017-11-09 06:27:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_permission`
+--
+
+CREATE TABLE `tbl_permission` (
+  `ID` varchar(40) NOT NULL,
+  `Name` varchar(40) NOT NULL,
+  `Category` varchar(40) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_permission`
+--
+
+INSERT INTO `tbl_permission` (`ID`, `Name`, `Category`) VALUES
+('PUBLISHER_C', 'PUBLISHER_C', 'PUBLISHER'),
+('PUBLISHER_R', 'PUBLISHER_R', 'PUBLISHER'),
+('PUBLISHER_U', 'PUBLISHER_U', 'PUBLISHER'),
+('PUBLISHER_D', 'PUBLISHER_D', 'PUBLISHER'),
+('SUBSCRIBER_C', 'SUBSCRIBER_C', 'SUBSCRIBER'),
+('SUBSCRIBER_R', 'SUBSCRIBER_R', 'SUBSCRIBER'),
+('SUBSCRIBER_U', 'SUBSCRIBER_U', 'SUBSCRIBER'),
+('SUBSCRIBER_D', 'SUBSCRIBER_D', 'SUBSCRIBER'),
+('NOTICE_C', 'NOTICE_C', 'NOTICE'),
+('NOTICE_R', 'NOTICE_R', 'NOTICE'),
+('NOTICE_U', 'NOTICE_U', 'NOTICE'),
+('NOTICE_D', 'NOTICE_D', 'NOTICE'),
+('CATEGORY_C', 'CATEGORY_C', 'CATEGORY'),
+('CATEGORY_R', 'CATEGORY_R', 'CATEGORY'),
+('CATEGORY_U', 'CATEGORY_U', 'CATEGORY'),
+('CATEGORY_D', 'CATEGORY_D', 'CATEGORY'),
+('CONTENT_C', 'CONTENT_C', 'CONTENT'),
+('CONTENT_R', 'CONTENT_R', 'CONTENT'),
+('CONTENT_U', 'CONTENT_U', 'CONTENT'),
+('CONTENT_D', 'CONTENT_D', 'CONTENT'),
+('ROLE_C', 'ROLE_C', 'ROLE'),
+('ROLE_R', 'ROLE_R', 'ROLE'),
+('ROLE_U', 'ROLE_U', 'ROLE'),
+('ROLE_D', 'ROLE_D', 'ROLE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_post_notification`
+--
+
+CREATE TABLE `tbl_post_notification` (
+  `SubCatID` varchar(255) NOT NULL,
+  `Status` int(100) NOT NULL,
+  `Notice` longtext NOT NULL,
+  `SubscriberID` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_post_notification`
+--
+
+INSERT INTO `tbl_post_notification` (`SubCatID`, `Status`, `Notice`, `SubscriberID`) VALUES
+('{A96D121C-30ED-4C25-8717-FEBA5B8D626B}', 1, 'Result', '{'),
+('{A96D121C-30ED-4C25-8717-FEBA5B8D626B}', 1, 'Result', '{');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_profileimage`
+--
+
+CREATE TABLE `tbl_profileimage` (
+  `id` int(11) NOT NULL,
+  `UserID` varchar(255) NOT NULL,
+  `Image` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_profileimage`
+--
+
+INSERT INTO `tbl_profileimage` (`id`, `UserID`, `Image`) VALUES
+(6, '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', 'uploads/16a2803b64.jpg'),
+(5, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/faac2a1fd2.jpg'),
+(4, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/ac97e07194.jpg'),
+(7, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/72c2ad2ad1.jpg'),
+(8, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/a869189680.jpg'),
+(9, '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', 'uploads/451a595000.jpg'),
+(10, '{BC6BD37B-CCFE-4AEE-BEA9-19373F26201C}', 'uploads/6a05f748f3.jpg'),
+(11, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/c3a0bf0e9a.jpg'),
+(12, '{2D7852F8-D70A-4222-8306-FB0F4FC22DBC}', 'uploads/bf46ccb706.jpg'),
+(13, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/8eddd720c5.jpg'),
+(14, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/ec53cd1ee8.jpg'),
+(15, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/d80f2bbcfc.jpg'),
+(16, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/b80eb75750.pdf'),
+(17, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/3275b8d48f.jpg'),
+(18, '{7051B474-DB05-466B-B1F6-EE9B9EF0F83A}', 'uploads/79e9edab38.jpg'),
+(19, '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', 'uploads/dcc99b14cf.jpg'),
+(20, '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', 'uploads/affe184980.jpg'),
+(21, '{4C24798C-C6A8-4373-A3CE-535EE86003C6}', 'uploads/6f7ec9fc57.jpg'),
+(22, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/ca8f015410.jpg'),
+(23, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/9efc10cf7f.jpg'),
+(24, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/1788dc5920.jpg'),
+(25, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/41151be94e.jpg'),
+(26, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/109462a6e1.jpg'),
+(27, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/49c76b353f.jpg'),
+(28, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/b9b06835e9.jpg'),
+(29, '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'uploads/06a1eeb11f.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_request`
+--
+
+CREATE TABLE `tbl_request` (
+  `ReqID` varchar(255) NOT NULL,
+  `InstituteID` varchar(255) NOT NULL,
+  `SubscriberID` varchar(255) NOT NULL,
+  `CatID` varchar(255) NOT NULL,
+  `Status` int(40) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_request`
+--
+
+INSERT INTO `tbl_request` (`ReqID`, `InstituteID`, `SubscriberID`, `CatID`, `Status`) VALUES
+('{5CEF58B5-5658-4826-8339-F88A648D89AD}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', '{94BAED2D-83C5-49B1-974E-714285F7834F}', 2),
+('{B376FF82-9522-47A6-A432-4D8225F93BE9}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', '{10ED608E-330C-4993-A735-354AFC44543A}', 1),
+('{8D44146E-A3B8-4C95-A8F4-4457FB62AD53}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{825A18E5-3C5F-4939-9106-57ABC15021BC}', 2),
+('{59FBA1C0-AACF-40B8-BA36-6AE4ECA845AE}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{10ED608E-330C-4993-A735-354AFC44543A}', 1),
+('{940FD3E5-E299-4574-9C68-0BF0B37AC8C4}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', '{606AA9D1-C2F9-45DC-BEB9-EF1EBDCC46C4}', 2),
+('{7E479966-F1AB-4DA4-8C97-14078BE242CB}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{4C24798C-C6A8-4373-A3CE-535EE86003C6}', '{10ED608E-330C-4993-A735-354AFC44543A}', 1),
+('{3AAB3331-0937-4976-A835-B01A32F0D51F}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{7051B474-DB05-466B-B1F6-EE9B9EF0F83A}', '{10ED608E-330C-4993-A735-354AFC44543A}', 2),
+('{AE811DCC-BAB0-48E4-A4B4-33C7B18BDEC7}', '{AED34307-DF37-44AB-9523-EA8AA07D3A7F}', '{BC6BD37B-CCFE-4AEE-BEA9-19373F26201C}', '{A79C4207-5B0C-4A46-B607-E95EFBDBCFFD}', 2),
+('{31DFC6E9-ACF9-4189-A5A8-82FC28BE42F1}', '{8809CFFE-7D0E-469C-95DD-897671FAA656}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{989DB3D1-7859-4531-92D4-BD1D543FAEDE}', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_request_pub`
+--
+
+CREATE TABLE `tbl_request_pub` (
+  `ReqID` varchar(255) NOT NULL,
+  `InstituteID` varchar(255) NOT NULL,
+  `OrganizerID` varchar(255) NOT NULL,
+  `PublisherID` varchar(255) NOT NULL,
+  `CatID` varchar(255) NOT NULL,
+  `Status` int(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_request_pub`
+--
+
+INSERT INTO `tbl_request_pub` (`ReqID`, `InstituteID`, `OrganizerID`, `PublisherID`, `CatID`, `Status`) VALUES
+('{68D475B5-6564-48C4-8156-B744B1D618B7}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{99E9852D-B301-4694-9503-2ED5BC6E6B74}', '{606AA9D1-C2F9-45DC-BEB9-EF1EBDCC46C4}', 1),
+('{5E7BBF35-4BEF-4BEB-BE54-C3A6ACC2AA0F}', '{AED34307-DF37-44AB-9523-EA8AA07D3A7F}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{BC6BD37B-CCFE-4AEE-BEA9-19373F26201C}', '{A79C4207-5B0C-4A46-B607-E95EFBDBCFFD}', 2),
+('{58BC6543-32A0-4699-9708-F5D6C9F3C0D6}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{BC6BD37B-CCFE-4AEE-BEA9-19373F26201C}', '{825A18E5-3C5F-4939-9106-57ABC15021BC}', 1),
+('{BB8EB24F-8581-433F-8834-221A8EA89189}', '{53D9DDDA-36C1-407D-BF3A-30FA3265CB08}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{4C24798C-C6A8-4373-A3CE-535EE86003C6}', '{10ED608E-330C-4993-A735-354AFC44543A}', 2),
+('{4B3AF32B-6476-47ED-A5BC-3AE021A175C0}', '{AED34307-DF37-44AB-9523-EA8AA07D3A7F}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', '{A79C4207-5B0C-4A46-B607-E95EFBDBCFFD}', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_role`
+--
+
+CREATE TABLE `tbl_role` (
+  `ID` varchar(40) NOT NULL,
+  `Name` varchar(40) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_role`
+--
+
+INSERT INTO `tbl_role` (`ID`, `Name`) VALUES
+('{300B373F-2D63-4322-9ED7-D93598D0DE0F}', 'Publisher'),
+('{500F283F-B6B7-4FD5-8248-67FED50A04C5}', 'Subscriber'),
+('{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'Admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_role_permission`
+--
+
+CREATE TABLE `tbl_role_permission` (
+  `Row` int(11) NOT NULL,
+  `RoleID` varchar(40) NOT NULL,
+  `PermissionID` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_role_permission`
+--
+
+INSERT INTO `tbl_role_permission` (`Row`, `RoleID`, `PermissionID`) VALUES
+(225, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'COURSE_C'),
+(226, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'COURSE_D'),
+(227, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'FILE_C'),
+(228, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'FILE_D'),
+(229, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'FILE_R'),
+(230, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'FILE_U'),
+(231, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'POSITION_C'),
+(232, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'POSITION_D'),
+(233, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'POSITION_R'),
+(234, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'POSITION_U'),
+(441, '{1AF8A832-4C03-49C7-8071-C71D4EB4FC57}', 'FILE_C'),
+(442, '{1AF8A832-4C03-49C7-8071-C71D4EB4FC57}', 'FILE_D'),
+(443, '{1AF8A832-4C03-49C7-8071-C71D4EB4FC57}', 'SURVEY_U'),
+(444, '{1AF8A832-4C03-49C7-8071-C71D4EB4FC57}', 'TERM_U'),
+(557, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'CLUB_D'),
+(558, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'CLUB_R'),
+(559, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'COURSE_D'),
+(560, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'PROJECT_C'),
+(561, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'PROJECT_D'),
+(562, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'PROJECT_R'),
+(563, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'PROJECT_U'),
+(564, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'CLUB_C'),
+(565, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'CLUB_D'),
+(566, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'CLUB_R'),
+(567, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'CLUB_U'),
+(568, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'COURSE_C'),
+(569, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'COURSE_D'),
+(570, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'COURSE_R'),
+(571, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'COURSE_U'),
+(572, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'DISCIPLINE_C'),
+(573, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'DISCIPLINE_D'),
+(574, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'DISCIPLINE_R'),
+(575, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'DISCIPLINE_U'),
+(576, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'FILE_C'),
+(577, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'FILE_D'),
+(578, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'FILE_R'),
+(579, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'FILE_U'),
+(580, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'POSITION_C'),
+(581, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'POSITION_D'),
+(582, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'POSITION_R'),
+(583, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'POSITION_U'),
+(584, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'PROJECT_C'),
+(585, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'PROJECT_D'),
+(586, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'PROJECT_R'),
+(587, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'PROJECT_U'),
+(588, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'ROLE_C'),
+(589, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'ROLE_D'),
+(590, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'ROLE_R'),
+(591, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'ROLE_U'),
+(592, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SCHOOL_C'),
+(593, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SCHOOL_D'),
+(594, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SCHOOL_R'),
+(595, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SCHOOL_U'),
+(596, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SESSION_C'),
+(597, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SESSION_D'),
+(598, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SESSION_R'),
+(599, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SESSION_U'),
+(600, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SURVEY_C'),
+(601, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SURVEY_D'),
+(602, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SURVEY_R'),
+(603, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SURVEY_U'),
+(604, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'TERM_C'),
+(605, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'TERM_D'),
+(606, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'TERM_R'),
+(607, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'TERM_U'),
+(608, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'USER_C'),
+(609, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'USER_D'),
+(610, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'USER_R'),
+(611, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'USER_U'),
+(612, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'YEAR_C'),
+(613, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'YEAR_D'),
+(614, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'YEAR_R'),
+(615, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'YEAR_U'),
+(625, '{500F283F-B6B7-4FD5-8248-67FED50A04C5}', 'NOTICE_C'),
+(626, '{500F283F-B6B7-4FD5-8248-67FED50A04C5}', 'NOTICE_R'),
+(627, '{500F283F-B6B7-4FD5-8248-67FED50A04C5}', 'NOTICE_U'),
+(628, '{500F283F-B6B7-4FD5-8248-67FED50A04C5}', 'NOTICE_D'),
+(629, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'PUBLISHER_C'),
+(630, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'PUBLISHER_R'),
+(631, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'PUBLISHER_U'),
+(632, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'PUBLISHER_D'),
+(633, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'SUBSCRIBER_C'),
+(634, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'SUBSCRIBER_R'),
+(635, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'SUBSCRIBER_U'),
+(636, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'SUBSCRIBER_D'),
+(637, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'NOTICE_C'),
+(638, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'NOTICE_R'),
+(639, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'NOTICE_U'),
+(640, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'NOTICE_D'),
+(641, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'CATEGORY_C'),
+(642, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'CATEGORY_R'),
+(643, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'CATEGORY_U'),
+(644, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'CATEGORY_D'),
+(645, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'CONTENT_C'),
+(646, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'CONTENT_R'),
+(647, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'CONTENT_U'),
+(648, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'CONTENT_D'),
+(649, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'ROLE_C'),
+(650, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'ROLE_R'),
+(651, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'ROLE_U'),
+(652, '{3BB9B37A-01E4-493B-A283-0448547E6BB0}', 'ROLE_D');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_tree`
+--
+
+CREATE TABLE `tbl_tree` (
+  `ID` int(100) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `ParentID` int(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_tree`
+--
+
+INSERT INTO `tbl_tree` (`ID`, `Name`, `ParentID`) VALUES
+(4, 'Khulna University', 0),
+(5, '', 0),
+(6, '', 0),
+(7, 'KUET', 0),
+(8, 'BTHQPH School', 0),
+(9, 'Katpara School', 0),
+(10, 'ABC primary School', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user`
+--
+
+CREATE TABLE `tbl_user` (
+  `ID` varchar(255) NOT NULL,
+  `FirstName` varchar(100) NOT NULL,
+  `LastName` varchar(100) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`ID`, `FirstName`, `LastName`, `Email`, `Password`, `Address`) VALUES
+('{4A8BC16B-A271-4B6D-BE1C-5B443A7E0B2E}', 'Binayak', 'Ray', 'csebinayak.ku@gmail.com', '1212', 'Khulna university,Khulna'),
+('{4C24798C-C6A8-4373-A3CE-535EE86003C6}', 'Sohel', 'Rana', 'sohel@gmail.com', '130209', 'khulna university'),
+('{BC6BD37B-CCFE-4AEE-BEA9-19373F26201C}', 'Biswajit', 'Kumar', 'biswa@gmail.com', '130235', 'khulna university'),
+('{7051B474-DB05-466B-B1F6-EE9B9EF0F83A}', 'Shamim', 'Hasan', 'nayan@gmail.com', '130240', 'BB Hall'),
+('{2D7852F8-D70A-4222-8306-FB0F4FC22DBC}', 'Ajay', 'yadov', 'ajay@gmail.com', '1234', 'khulna university'),
+('{99E9852D-B301-4694-9503-2ED5BC6E6B74}', 'Masum', 'Moral', 'masum@gmail.com', '130217', 'khulna university');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tbl_child_cat`
+--
+ALTER TABLE `tbl_child_cat`
+  ADD PRIMARY KEY (`CatID`);
+
+--
+-- Indexes for table `tbl_file`
+--
+ALTER TABLE `tbl_file`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_image`
+--
+ALTER TABLE `tbl_image`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_institution`
+--
+ALTER TABLE `tbl_institution`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_new_publisher`
+--
+ALTER TABLE `tbl_new_publisher`
+  ADD PRIMARY KEY (`CategoryID`);
+
+--
+-- Indexes for table `tbl_permission`
+--
+ALTER TABLE `tbl_permission`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_profileimage`
+--
+ALTER TABLE `tbl_profileimage`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_request`
+--
+ALTER TABLE `tbl_request`
+  ADD PRIMARY KEY (`ReqID`);
+
+--
+-- Indexes for table `tbl_request_pub`
+--
+ALTER TABLE `tbl_request_pub`
+  ADD PRIMARY KEY (`ReqID`);
+
+--
+-- Indexes for table `tbl_role`
+--
+ALTER TABLE `tbl_role`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_role_permission`
+--
+ALTER TABLE `tbl_role_permission`
+  ADD PRIMARY KEY (`Row`);
+
+--
+-- Indexes for table `tbl_tree`
+--
+ALTER TABLE `tbl_tree`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_profileimage`
+--
+ALTER TABLE `tbl_profileimage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+--
+-- AUTO_INCREMENT for table `tbl_role_permission`
+--
+ALTER TABLE `tbl_role_permission`
+  MODIFY `Row` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=653;
+--
+-- AUTO_INCREMENT for table `tbl_tree`
+--
+ALTER TABLE `tbl_tree`
+  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,0 +1,25 @@
+.tree
+{
+	position: relative;
+	/*top: 100px;*/
+	/*left: 40%;*/
+}
+.dinline
+{
+	display: inline-block;
+}
+
+/*div h2,h3, h4, h5, h6
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+.childs
+{
+	margin-left: 20px;
+}
+h2,h3, h4, h5, h6
+{
+	display: inline-block;
+}*/
